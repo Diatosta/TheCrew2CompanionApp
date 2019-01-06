@@ -4,7 +4,7 @@
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:local="clr-namespace:TheCrew2CompanionApp.Renderers"
              x:Class="TheCrew2CompanionApp.Views.ItemsPage"
-             Title="{Binding Title}"
+             Title="Vehicles List"
              x:Name="VehiclesPage">
     <StackLayout>
         <flv:FlowListView x:Name="carsList"
@@ -19,6 +19,7 @@
                           Margin="5, 5, 5, 5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
@@ -57,6 +58,13 @@
                                             Grid.Column="1"
                                             IsEnabled="False"
                                             IsToggled="{Binding HasBeenPurchased}" />
+                        <Label Grid.Row="4"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
+                               Text="{Binding CostBucks, StringFormat='Cost: {0:N0}B'}"
+                               TextColor="White"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center" />
                     </Grid>
                 </DataTemplate>
             </flv:FlowListView.FlowColumnTemplate>

@@ -1,10 +1,22 @@
 ﻿{
   "Abarth": {
     "Name": "Abarth",
-    "BrandImage": "ManufacturerAbarth.png"
+    "Image": "ManufacturerAbarth.png"
   },
   "Acura": {
     "Name": "Acura",
-    "BrandImage": "ManufacturerAcura.png"
+    "Image": "ManufacturerAcura.png"
+  },
+  "Aeoroboat": {
+    "Name": "Aeroboat",
+    "Image": null
+  },
+  "AlfaRomeo": {
+    "Name": "Alfa Romeo",
+    "Image": "ManufacturerAlfa_Romeo.png"
+  },
+  "Ariel": {
+    "Name": "Ariel",
+    "Image": "ManufacturerAriel.png"
   }
 }

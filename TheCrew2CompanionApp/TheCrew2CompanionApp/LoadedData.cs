@@ -7,6 +7,7 @@ using System.Text;
 using TheCrew2CompanionApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using static TheCrew2CompanionApp.Models.VehicleCategoriesEnum;
 using static TheCrew2CompanionApp.Models.VehicleCategory;
 
 namespace TheCrew2CompanionApp
@@ -16,36 +17,56 @@ namespace TheCrew2CompanionApp
         public static List<Vehicle> Vehicles = new List<Vehicle>();
         public static List<VehicleItem> VehicleItems = new List<VehicleItem>();
         public static Dictionary<string, Brand> Brands = new Dictionary<string, Brand>();
-        public static Dictionary<VehicleTypes, VehicleGlobalCategories> VehicleCategories = new Dictionary<VehicleTypes, VehicleGlobalCategories>();
+        public static Dictionary<VehicleTypes, VehicleCategory> VehicleCategories = new Dictionary<VehicleTypes, VehicleCategory>();
 
         public static void CreateCategories()
         {
-            VehicleCategories.Add(VehicleTypes.None, new VehicleGlobalCategories
+            VehicleCategories.Add(VehicleTypes.None, new VehicleCategory
             {
                 Name = "No category",
-                VehicleTypes = VehicleTypes.None,
-                MaximumRating = 0
+                VehicleActualTypes = VehicleTypes.None,
+                MaximumRating = 0,
+                CategoryImage = null
             });
 
-            VehicleCategories.Add(VehicleTypes.StreetRacing, new VehicleGlobalCategories
+            VehicleCategories.Add(VehicleTypes.StreetRacing, new VehicleCategory
             {
                 Name = "Street Racing",
-                VehicleTypes = VehicleTypes.StreetRacing,
-                MaximumRating = 280
+                VehicleActualTypes = VehicleTypes.StreetRacing,
+                MaximumRating = 280,
+                CategoryImage = ImageSource.FromResource("TheCrew2CompanionApp.CategoryImages.TC2LogoSR.jpg")
             });
 
-            VehicleCategories.Add(VehicleTypes.HyperCar, new VehicleGlobalCategories
+            VehicleCategories.Add(VehicleTypes.HyperCar, new VehicleCategory
             {
                 Name = "Hypercar",
-                VehicleTypes = VehicleTypes.HyperCar,
-                MaximumRating = 320
+                VehicleActualTypes = VehicleTypes.HyperCar,
+                MaximumRating = 320,
+                CategoryImage = ImageSource.FromResource("TheCrew2CompanionApp.CategoryImages.TC2LogoHC.jpg")
             });
 
-            VehicleCategories.Add(VehicleTypes.RallyCross, new VehicleGlobalCategories
+            VehicleCategories.Add(VehicleTypes.Drift, new VehicleCategory
+            {
+                Name = "Drift",
+                VehicleActualTypes = VehicleTypes.Drift,
+                MaximumRating = 240,
+                CategoryImage = ImageSource.FromResource("TheCrew2CompanionApp.CategoryImages.TC2LogoDF.jpg")
+            });
+
+            VehicleCategories.Add(VehicleTypes.RallyCross, new VehicleCategory
             {
                 Name = "RallyCross",
-                VehicleTypes = VehicleTypes.RallyCross,
-                MaximumRating = 230
+                VehicleActualTypes = VehicleTypes.RallyCross,
+                MaximumRating = 230,
+                CategoryImage = ImageSource.FromResource("TheCrew2CompanionApp.CategoryImages.TC2LogoRX.jpg")
+            });
+
+            VehicleCategories.Add(VehicleTypes.MonsterTruck, new VehicleCategory
+            {
+                Name = "Monster Truck",
+                VehicleActualTypes = VehicleTypes.MonsterTruck,
+                MaximumRating = 140,
+                CategoryImage = ImageSource.FromResource("TheCrew2CompanionApp.CategoryImages.TC2LogoRX.jpg")
             });
         }
 
@@ -100,6 +121,7 @@ namespace TheCrew2CompanionApp
                 {
                     string brand = vehicleObject["Brand"];
                     string imageSource = vehicleObject["Image"];
+                    VehicleTypes vehicleTypes = vehicleObject["Type"];
 
                     Vehicle vehicle = new Vehicle
                     {
@@ -111,11 +133,12 @@ namespace TheCrew2CompanionApp
                         VehicleImage = ImageSource.FromResource("TheCrew2CompanionApp.CarImages." + imageSource),
                         TopSpeedKMh = vehicleObject["TopSpeedKMh"],
                         LevelToUnlock = vehicleObject["LevelToUnlock"],
+                        SeasonPassExclusive = vehicleObject["SeasonPassExclusive"],
                         PowerBHP = vehicleObject["PowerBHP"],
                         Rating = vehicleObject["Rating"],
-                        VehicleCategory = (VehicleCategories)vehicleObject["Category"],
-                        VehicleType = (VehicleTypes)vehicleObject["Type"],
-                        VehicleTypeOverall = (VehicleTypeOverall)vehicleObject["TypeOverall"]
+                        VehicleActualCategory = (VehicleCategories)vehicleObject["Category"],
+                        VehicleCategory = LoadedData.VehicleCategories[vehicleTypes],
+                        VehicleActualTypeOverall = (VehicleTypeOverall)vehicleObject["TypeOverall"]
                     };
 
                     Vehicles.Add(vehicle);
@@ -123,7 +146,7 @@ namespace TheCrew2CompanionApp
             }
         }
 
-        public async static void LoadUserVehicleData()
+        public static void LoadUserVehicleData()
         {
             VehicleItems = App.Database.GetItems(); 
         }

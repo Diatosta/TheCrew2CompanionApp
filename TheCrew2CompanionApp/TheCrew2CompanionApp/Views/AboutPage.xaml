@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TheCrew2CompanionApp.Views.AboutPage"
              xmlns:vm="clr-namespace:TheCrew2CompanionApp.ViewModels"
-             Title="{Binding Title}">
+             Title="Player Statistics">
     
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
@@ -18,61 +18,87 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid BackgroundColor="#202020">
+    <Grid BackgroundColor="#202020"
+          Padding="5, 5, 5, 5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
-                </ContentView>
-            </StackLayout>
-        </StackLayout>
-        <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-                <Label FontSize="22">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="AppName" FontAttributes="Bold" FontSize="22" />
-                                <Span Text=" " />
-                                <Span Text="1.0" ForegroundColor="{StaticResource LightTextColor}" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="This app is written in C# and native APIs using the" />
-                                <Span Text=" " />
-                                <Span Text="Xamarin Platform" FontAttributes="Bold" />
-                                <Span Text="." />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="It shares code with its" />
-                                <Span Text=" " />
-                                <Span Text="iOS, Android, and Windows" FontAttributes="Bold" />
-                                <Span Text=" " />
-                                <Span Text="versions." />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Button Margin="0,10,0,0" Text="Learn more"
-                        Command="{Binding OpenWebCommand}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />
-            </StackLayout>
-        </ScrollView>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Text="Statistics"
+               TextColor="White"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center" />
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Text="Cars bought: "
+               TextColor="White"
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Center" />
+        <Label x:Name="CarsBoughtLabel"
+               Grid.Row="1"
+               Grid.Column="1"
+               TextColor="White"
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Center" />
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               Text="To get remaining cars (Bucks): "
+               TextColor="White"
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Center" />
+        <Label x:Name="RemainingValueLabelBucks"
+               Grid.Row="2"
+               Grid.Column="1"
+               TextColor="White"
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Center" />
+        <Label Grid.Row="3"
+               Grid.Column="0"
+               Text="To get remaining cars (Bucks)(Discount): "
+               TextColor="White"
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Center" />
+        <Label x:Name="RemainingValueLabelBucksDiscount"
+               Grid.Row="3"
+               Grid.Column="1"
+               TextColor="White"
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Center" />
+        <Label Grid.Row="4"
+               Grid.Column="0"
+               Text="To get remaining cars (Credits): "
+               TextColor="White"
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Center" />
+        <Label x:Name="RemainingValueLabelCredits"
+               Grid.Row="4"
+               Grid.Column="1"
+               TextColor="White"
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Center" />
+        <Label Grid.Row="5"
+               Grid.Column="0"
+               Text="To get remaining cars (Credits)(Discount): "
+               TextColor="White"
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Center" />
+        <Label x:Name="RemainingValueLabelCreditsDiscount"
+               Grid.Row="5"
+               Grid.Column="1"
+               TextColor="White"
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Center" />
     </Grid>
 </ContentPage>

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TheCrew2CompanionApp.Renderers"
-             x:Class="TheCrew2CompanionApp.Views.VehicleDetailsPage">
+             x:Class="TheCrew2CompanionApp.Views.VehicleDetailsPage"
+             Title="Vehicle Details">
     <ContentPage.Content>
         <Grid BackgroundColor="#202020"
               Padding="5, 5, 5, 5">
@@ -28,13 +29,43 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Image Grid.Row="0"
+            <Grid Grid.Row="0"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  HeightRequest="200">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="0"
+                       Grid.RowSpan="3"
                    Grid.Column="0"
-                   Grid.ColumnSpan="2"
+                   Grid.ColumnSpan="3"
                    x:Name="vehicleImage"
                    Aspect="AspectFill"
                    HeightRequest="200"
                    Source="{Binding VehicleImage}" />
+                <Image Grid.Row="2"
+                       Grid.Column="0"
+                       x:Name="categoryImage"
+                       Aspect="AspectFit"
+                       VerticalOptions="End"
+                       HorizontalOptions="Start"
+                       Source="{Binding VehicleCategory.CategoryImage}" />
+                <Image Grid.Row="2"
+                       Grid.Column="2"
+                       x:Name="brandImage"
+                       Aspect="AspectFit"
+                       VerticalOptions="End"
+                       HorizontalOptions="End"
+                       Source="{Binding VehicleBrand.BrandImage}" />
+            </Grid>
             <Label Grid.Row="1"
                    Grid.Column="0"
                    Text="{Binding VehicleBrand.Name, StringFormat='Brand: {0}'}"
@@ -66,17 +97,16 @@
                      HeightRequest="1"
                      WidthRequest="200"
                      Color="Gray" />
-            <Label Grid.Row="5"
+            <Label x:Name="CostBucksLabel" Grid.Row="5"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
-                   Text="{Binding CostBucks, StringFormat='Cost(Bucks): {0}'}"
                    TextColor="White"
                    HorizontalTextAlignment="Start"
                    VerticalTextAlignment="Center" />
-            <Label Grid.Row="6"
+            <Label x:Name="CostCreditsLabel" Grid.Row="6"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
-                   Text="{Binding CostCredits, StringFormat='Cost(Credits): {0}'}"
+                   Text="{Binding CostCredits, StringFormat='Cost(Credits): {0}CC'}"
                    TextColor="White"
                    HorizontalTextAlignment="Start"
                    VerticalTextAlignment="Center" />
@@ -117,15 +147,22 @@
                    TextColor="White"
                    HorizontalTextAlignment="Start"
                    VerticalTextAlignment="Center" />
-            <Label x:Name="RatingLabel"
+            <Label x:Name="SeasonPassExclusiveLabel"
                    Grid.Row="12"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
                    TextColor="White"
                    HorizontalTextAlignment="Start"
                    VerticalTextAlignment="Center" />
-            <Label x:Name="CategoryLabel"
+            <Label x:Name="RatingLabel"
                    Grid.Row="13"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center" />
+            <Label x:Name="CategoryLabel"
+                   Grid.Row="14"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
                    TextColor="White"

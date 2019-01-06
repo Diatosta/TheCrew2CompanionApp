@@ -18,8 +18,8 @@ namespace TheCrew2CompanionApp.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" }
+                new HomeMenuItem {Id = MenuItemType.Browse, Title="Vehicles List" },
+                new HomeMenuItem {Id = MenuItemType.About, Title="Statistics" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
