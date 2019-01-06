@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheCrew2CompanionApp.Interfaces;
 using TheCrew2CompanionApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,13 +24,15 @@ namespace TheCrew2CompanionApp.Views
 
             BindingContext = this.vehicle;
 
-            UnlockLevelLabel.Text = "Unlock level: " + (this.vehicle.LevelToUnlock > 0 ? this.vehicle.LevelToUnlock.ToString() : "Not unlockable through leveling up");
+            HasBeenPurchasedSwitch.IsToggled = this.vehicle.HasBeenPurchased;
 
-            TopSpeedKmhLabel.Text = "Top speed (Kmh): " + (this.vehicle.TopSpeedKMh > 0 ? this.vehicle.TopSpeedKMh.ToString() : "Not available");
+            UnlockLevelLabel.Text = "Unlock level: " + (this.vehicle.LevelToUnlock > 0 ? this.vehicle.LevelToUnlock.ToString() : "N/A");
 
-            TopSpeedMphLabel.Text = "Top speed (Mph): " + (this.vehicle.TopSpeedKMh > 0 ? (this.vehicle.TopSpeedKMh / 1.609f).ToString() : "Not available");
+            TopSpeedKmhLabel.Text = "Top speed (Kmh): " + (this.vehicle.TopSpeedKMh > 0 ? this.vehicle.TopSpeedKMh.ToString() : "N/A");
 
-            PowerBHPLabel.Text = "Bhp: " + (this.vehicle.PowerBHP > 0 ? this.vehicle.PowerBHP.ToString() : "Not available");
+            TopSpeedMphLabel.Text = "Top speed (Mph): " + (this.vehicle.TopSpeedKMh > 0 ? (this.vehicle.TopSpeedKMh / 1.609f).ToString() : "N/A");
+
+            PowerBHPLabel.Text = "Bhp: " + (this.vehicle.PowerBHP > 0 ? this.vehicle.PowerBHP.ToString() : "N/A");
             
              VehicleGlobalCategories currentVehicleCategory = LoadedData.VehicleCategories[vehicle.VehicleType];
 
@@ -37,6 +40,26 @@ namespace TheCrew2CompanionApp.Views
 
             CategoryLabel.Text = "Category: " + currentVehicleCategory.Name;
 
+            HasBeenPurchasedSwitch.Toggled += Switch_Toggled;
         }
-	}
+
+        private void Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            VehicleItem vehicleItem = new VehicleItem
+            {
+                Id = vehicle.Id,
+                HasBeenPurchased = e.Value
+            };
+
+            if (App.Database.SaveItem(vehicleItem))
+            {
+                DependencyService.Get<Toast>().Show("Data updated successfully");
+                vehicle.HasBeenPurchased = e.Value;
+            }
+            else
+            {
+                DependencyService.Get<Toast>().Show("Unable to update data");
+            }
+        }
+    }
 }

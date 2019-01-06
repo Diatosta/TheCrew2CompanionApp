@@ -14,6 +14,7 @@ namespace TheCrew2CompanionApp
     public class LoadedData
     {
         public static List<Vehicle> Vehicles = new List<Vehicle>();
+        public static List<VehicleItem> VehicleItems = new List<VehicleItem>();
         public static Dictionary<string, Brand> Brands = new Dictionary<string, Brand>();
         public static Dictionary<VehicleTypes, VehicleGlobalCategories> VehicleCategories = new Dictionary<VehicleTypes, VehicleGlobalCategories>();
 
@@ -120,6 +121,11 @@ namespace TheCrew2CompanionApp
                     Vehicles.Add(vehicle);
                 }
             }
+        }
+
+        public async static void LoadUserVehicleData()
+        {
+            VehicleItems = App.Database.GetItems(); 
         }
     }
 }

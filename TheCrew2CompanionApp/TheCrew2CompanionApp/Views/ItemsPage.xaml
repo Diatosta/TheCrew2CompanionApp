@@ -2,20 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
-             xmlns:local="clr-namespace:TheCrew2CompanionApp.Converters"
+             xmlns:local="clr-namespace:TheCrew2CompanionApp.Renderers"
              x:Class="TheCrew2CompanionApp.Views.ItemsPage"
              Title="{Binding Title}"
-             x:Name="BrowseItemsPage">
+             x:Name="VehiclesPage">
     <StackLayout>
         <flv:FlowListView x:Name="carsList"
                           FlowColumnCount="2"
                           SeparatorVisibility="None"
                           HasUnevenRows="True"
                           FlowItemTapped="CarsList_FlowItemTapped"
-                          BackgroundColor="Black">
+                          BackgroundColor="#202020">
             <flv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
-                    <Grid HeightRequest="120"
+                    <Grid HeightRequest="200"
                           Margin="5, 5, 5, 5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
@@ -23,22 +23,40 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
                         <Image Grid.Row="0"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
                                x:Name="vehicleImage"
                                Aspect="AspectFill"
                                Source="{Binding VehicleImage}" />
                         <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
                                Text="{Binding VehicleBrand.Name}"
                                TextColor="White"
                                HorizontalTextAlignment="Start"
                                VerticalTextAlignment="Center" />
                         <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
                                Text="{Binding Name}"
                                TextColor="White"
                                HorizontalTextAlignment="Start" 
                                VerticalTextAlignment="Center" />
-                        <Switch Grid.Row="3"
-                                IsToggled="{Binding HasBeenPurchased}" />
+                        <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Text="Purchased: "
+                               TextColor="White"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center" />
+                        <local:CustomSwitch Grid.Row="3"
+                                            Grid.Column="1"
+                                            IsEnabled="False"
+                                            IsToggled="{Binding HasBeenPurchased}" />
                     </Grid>
                 </DataTemplate>
             </flv:FlowListView.FlowColumnTemplate>

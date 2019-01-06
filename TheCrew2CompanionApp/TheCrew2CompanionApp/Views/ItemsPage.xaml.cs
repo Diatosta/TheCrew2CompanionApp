@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using TheCrew2CompanionApp.Models;
-using TheCrew2CompanionApp.Views;
-using TheCrew2CompanionApp.ViewModels;
-using DLToolkit.Forms.Controls;
-using System.Reflection;
-using static TheCrew2CompanionApp.Models.VehicleCategory;
-using Newtonsoft.Json;
 
 namespace TheCrew2CompanionApp.Views
 {
@@ -30,7 +19,17 @@ namespace TheCrew2CompanionApp.Views
 
             LoadedData.LoadVehicles();
 
+            LoadedData.LoadUserVehicleData();
+
             carsList.FlowItemsSource = LoadedData.Vehicles;
+
+            // Set the HasBeenPurchased variable for every vehicle.
+            foreach(VehicleItem vehicleItem in LoadedData.VehicleItems)
+            {
+                Vehicle vehicle = LoadedData.Vehicles.Find(vehicleToGet => vehicleToGet.Id == vehicleItem.Id);
+
+                vehicle.HasBeenPurchased = vehicleItem.HasBeenPurchased;
+            }
         }
 
         
