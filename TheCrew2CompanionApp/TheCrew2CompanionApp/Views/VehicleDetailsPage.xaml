@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TheCrew2CompanionApp.Views.VehicleDetailsPage">
+    <ContentPage.Content>
+        <Grid BackgroundColor="Black"
+              Padding="5, 5, 5, 5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   x:Name="vehicleImage"
+                   Aspect="AspectFill"
+                   HeightRequest="200"
+                   Source="{Binding VehicleImage}" />
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Text="{Binding VehicleBrand.Name, StringFormat='Brand: {0}'}"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center" />
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Text="{Binding Name, StringFormat='Model: {0}'}"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start" 
+                   VerticalTextAlignment="Center" />
+
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Text="Has been bought?"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center" />
+            <Switch Grid.Row="3"
+                    Grid.Column="1"
+                    IsToggled="{Binding HasBeenPurchased}" />
+
+            <BoxView Grid.Row="4"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     HeightRequest="1"
+                     WidthRequest="200"
+                     Color="Gray" />
+            <Label Grid.Row="5"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="{Binding CostBucks, StringFormat='Cost(Bucks): {0}'}"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center" />
+            <Label Grid.Row="6"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="{Binding CostCredits, StringFormat='Cost(Credits): {0}'}"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center" />
+            <Label x:Name="UnlockLevelLabel"
+                   Grid.Row="7"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center" />
+
+            <BoxView Grid.Row="8"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     HeightRequest="1"
+                     WidthRequest="200"
+                     Color="Gray" />
+            <Label x:Name="TopSpeedKmhLabel"
+                   Grid.Row="9"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center" />
+            <Label x:Name="TopSpeedMphLabel"
+                   Grid.Row="10"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center" />
+            <Label x:Name="PowerBHPLabel"
+                   Grid.Row="11"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center" />
+            <Label x:Name="RatingLabel"
+                   Grid.Row="12"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center" />
+            <Label x:Name="CategoryLabel"
+                   Grid.Row="13"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

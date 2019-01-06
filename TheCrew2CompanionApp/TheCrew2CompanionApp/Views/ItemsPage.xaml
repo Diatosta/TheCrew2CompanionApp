@@ -16,19 +16,29 @@
             <flv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
                     <Grid HeightRequest="120"
-                          Margin="0, 0, 0, 12">
+                          Margin="5, 5, 5, 5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Image Grid.Row="0"
                                x:Name="vehicleImage"
+                               Aspect="AspectFill"
                                Source="{Binding VehicleImage}" />
                         <Label Grid.Row="1"
+                               Text="{Binding VehicleBrand.Name}"
+                               TextColor="White"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center" />
+                        <Label Grid.Row="2"
                                Text="{Binding Name}"
                                TextColor="White"
-                               HorizontalTextAlignment="Center" 
+                               HorizontalTextAlignment="Start" 
                                VerticalTextAlignment="Center" />
+                        <Switch Grid.Row="3"
+                                IsToggled="{Binding HasBeenPurchased}" />
                     </Grid>
                 </DataTemplate>
             </flv:FlowListView.FlowColumnTemplate>
