@@ -1,0 +1,10 @@
+﻿{
+  "Abarth": {
+    "Name": "Abarth",
+    "BrandImage": "ManufacturerAbarth.png"
+  },
+  "Acura": {
+    "Name": "Acura",
+    "BrandImage": "ManufacturerAcura.png"
+  }
+}

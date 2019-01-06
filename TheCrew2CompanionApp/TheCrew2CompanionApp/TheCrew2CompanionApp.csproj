@@ -11,20 +11,24 @@
 
   <ItemGroup>
     <None Remove="BrandImages\ManufacturerAbarth.png" />
+    <None Remove="BrandsList.json" />
     <None Remove="CarImages\TC2Abarth124rally.jpg" />
     <None Remove="CarImages\TC2Abarth124spider.jpg" />
+    <None Remove="CarsList.json" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="BrandImages\ManufacturerAbarth.png" />
+    <EmbeddedResource Include="BrandsList.json" />
     <EmbeddedResource Include="CarImages\TC2Abarth124rally.jpg" />
-    <EmbeddedResource Include="CarImages\TC2Abarth124spider.jpg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="CarImages\TC2Abarth124spider.jpg" />
+    <EmbeddedResource Include="CarsList.json" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />  
   </ItemGroup>
 

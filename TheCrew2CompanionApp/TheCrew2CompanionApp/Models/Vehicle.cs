@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -8,6 +9,7 @@ namespace TheCrew2CompanionApp.Models
 {
     public class Vehicle
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public Brand VehicleBrand { get; set; }
         public float CostBucks { get; set; }

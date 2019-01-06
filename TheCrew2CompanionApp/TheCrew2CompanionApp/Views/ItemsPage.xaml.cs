@@ -13,6 +13,7 @@ using TheCrew2CompanionApp.ViewModels;
 using DLToolkit.Forms.Controls;
 using System.Reflection;
 using static TheCrew2CompanionApp.Models.VehicleCategory;
+using Newtonsoft.Json;
 
 namespace TheCrew2CompanionApp.Views
 {
@@ -23,58 +24,11 @@ namespace TheCrew2CompanionApp.Views
         {
             InitializeComponent();
 
-            LoadedData.VehicleCategories.Add(VehicleTypes.RallyCross, new VehicleGlobalCategories
-            {
-                Name = "RallyCross",
-                VehicleTypes = VehicleTypes.RallyCross,
-                MaximumRating = 230
-            });
+            LoadedData.CreateCategories();
 
-            LoadedData.VehicleCategories.Add(VehicleTypes.None, new VehicleGlobalCategories
-            {
-                Name = "No category",
-                VehicleTypes = VehicleTypes.None,
-                MaximumRating = 0
-            });
+            LoadedData.LoadBrands();
 
-            LoadedData.Brands.Add("Abarth", new Brand
-            {
-                Name = "Abarth",
-                BrandImage = ImageSource.FromResource("TheCrew2CompanionApp.CarImages.ManufacturerAbarth.png")
-            });
-
-            LoadedData.Vehicles.Add(new Vehicle
-            {
-                Name = "124 rally",
-                VehicleBrand = LoadedData.Brands["Abarth"],
-                CostBucks = 314000f,
-                CostCredits = 44900,
-                LevelToUnlock = -1,
-                HasBeenPurchased = false,
-                VehicleImage = ImageSource.FromResource("TheCrew2CompanionApp.CarImages.TC2Abarth124rally.jpg"),
-
-                TopSpeedKMh = -1,
-                PowerBHP = 300,
-                Rating = 131,
-
-                VehicleCategory = VehicleCategories.Car,
-                VehicleType = VehicleTypes.RallyCross,
-                VehicleTypeOverall = VehicleTypeOverall.Offroad
-            });
-
-            LoadedData.Vehicles.Add(new Vehicle
-            {
-                Name = "124 spider",
-                VehicleBrand = LoadedData.Brands["Abarth"],
-                CostBucks = 105700f,
-                CostCredits = 15100,
-                HasBeenPurchased = false,
-                VehicleImage = ImageSource.FromResource("TheCrew2CompanionApp.CarImages.TC2Abarth124spider.jpg"),
-                
-                TopSpeedKMh = 232,
-                PowerBHP = 170,
-                Rating = 53
-            });
+            LoadedData.LoadVehicles();
 
             carsList.FlowItemsSource = LoadedData.Vehicles;
         }

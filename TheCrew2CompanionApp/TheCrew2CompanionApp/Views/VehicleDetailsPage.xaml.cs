@@ -33,7 +33,6 @@ namespace TheCrew2CompanionApp.Views
             
              VehicleGlobalCategories currentVehicleCategory = LoadedData.VehicleCategories[vehicle.VehicleType];
 
-
             RatingLabel.Text = "Rating: " + this.vehicle.Rating.ToString() + "/" + currentVehicleCategory.MaximumRating.ToString();
 
             CategoryLabel.Text = "Category: " + currentVehicleCategory.Name;

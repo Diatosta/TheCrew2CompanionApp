@@ -1,0 +1,32 @@
+﻿{
+  "124rally" : {
+    "Id": 1,
+    "Brand": "Abarth",
+    "Name": "124 rally",
+    "CostBucks": 3143300,
+    "CostCredits": 44900,
+    "Image": "TC2Abarth124rally.jpg",
+    "TopSpeedKMh": -1,
+    "LevelToUnlock": -1,
+    "PowerBHP": 300,
+    "Rating": 131,
+    "Category": 1,
+    "Type": 11,
+    "TypeOverall": 2
+  },
+  "124spider": {
+    "Id": 2,
+    "Brand": "Abarth",
+    "Name": "124 spider",
+    "CostBucks": 105700,
+    "CostCredits": 15100,
+    "Image": "TC2Abarth124spider.jpg",
+    "TopSpeedKMh": 232,
+    "LevelToUnlock": -1,
+    "PowerBHP": 170,
+    "Rating": 53,
+    "Category": 1,
+    "Type": 1,
+    "TypeOverall": 1
+  }
+}
