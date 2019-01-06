@@ -10,6 +10,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="BrandImages\ManufacturerAbarth.png" />
+    <None Remove="CarImages\TC2Abarth124rally.jpg" />
+    <None Remove="CarImages\TC2Abarth124spider.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="BrandImages\ManufacturerAbarth.png" />
+    <EmbeddedResource Include="CarImages\TC2Abarth124rally.jpg" />
+    <EmbeddedResource Include="CarImages\TC2Abarth124spider.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />  
   </ItemGroup>
 </Project>

@@ -1,45 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:local="clr-namespace:TheCrew2CompanionApp.Converters"
              x:Class="TheCrew2CompanionApp.Views.ItemsPage"
-              Title="{Binding Title}"
+             Title="{Binding Title}"
              x:Name="BrowseItemsPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddItem_Clicked">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="UWP" Value="add.png"/>
-                </OnPlatform>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
-
     <StackLayout>
-        <ListView x:Name="ItemsListView"
-                ItemsSource="{Binding Items}"
-                VerticalOptions="FillAndExpand"
-                HasUnevenRows="true"
-                RefreshCommand="{Binding LoadItemsCommand}"
-                IsPullToRefreshEnabled="true"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                CachingStrategy="RecycleElement"
-                ItemSelected="OnItemSelected">
-            <ListView.ItemTemplate>
+        <flv:FlowListView x:Name="carsList"
+                          FlowColumnCount="2"
+                          SeparatorVisibility="None"
+                          HasUnevenRows="True"
+                          FlowItemTapped="CarsList_FlowItemTapped"
+                          BackgroundColor="Black">
+            <flv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding Text}" 
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
-                            <Label Text="{Binding Description}" 
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
-                        </StackLayout>
-                    </ViewCell>
+                    <Grid HeightRequest="120"
+                          Margin="0, 0, 0, 12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"
+                               x:Name="vehicleImage"
+                               Source="{Binding VehicleImage}" />
+                        <Label Grid.Row="1"
+                               Text="{Binding Name}"
+                               TextColor="White"
+                               HorizontalTextAlignment="Center" 
+                               VerticalTextAlignment="Center" />
+                    </Grid>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </flv:FlowListView.FlowColumnTemplate>
+        </flv:FlowListView>
     </StackLayout>
 </ContentPage>

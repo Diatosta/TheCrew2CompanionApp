@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using TheCrew2CompanionApp.Views;
+using DLToolkit.Forms.Controls;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace TheCrew2CompanionApp
@@ -13,6 +14,7 @@ namespace TheCrew2CompanionApp
         {
             InitializeComponent();
 
+            FlowListView.Init();
 
             MainPage = new MainPage();
         }

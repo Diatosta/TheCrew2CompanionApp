@@ -10,44 +10,52 @@ using Xamarin.Forms.Xaml;
 using TheCrew2CompanionApp.Models;
 using TheCrew2CompanionApp.Views;
 using TheCrew2CompanionApp.ViewModels;
+using DLToolkit.Forms.Controls;
+using System.Reflection;
 
 namespace TheCrew2CompanionApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemsPage : ContentPage
     {
-        ItemsViewModel viewModel;
-
         public ItemsPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            LoadedData.Brands.Add("Abarth", new Brand
+            {
+                Name = "Abarth",
+                BrandImage = ImageSource.FromResource("TheCrew2CompanionApp.CarImages.ManufacturerAbarth.png")
+            });
+
+            LoadedData.Vehicles.Add(new Vehicle
+            {
+                Name = "124 rally",
+                VehicleBrand = LoadedData.Brands["Abarth"],
+                CostBucks = 314000f,
+                CostCredits = 44900,
+                HasBeenPurchased = false,
+                VehicleImage = ImageSource.FromResource("TheCrew2CompanionApp.CarImages.TC2Abarth124rally.jpg")
+            });
+
+            LoadedData.Vehicles.Add(new Vehicle
+            {
+                Name = "124 spider",
+                VehicleBrand = LoadedData.Brands["Abarth"],
+                CostBucks = 105700f,
+                CostCredits = 15100,
+                HasBeenPurchased = false,
+                VehicleImage = ImageSource.FromResource("TheCrew2CompanionApp.CarImages.TC2Abarth124spider.jpg")
+            });
+
+            carsList.FlowItemsSource = LoadedData.Vehicles;
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        
+        private void CarsList_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var item = args.SelectedItem as Item;
-            if (item == null)
-                return;
-
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
-
-            // Manually deselect item.
-            ItemsListView.SelectedItem = null;
-        }
-
-        async void AddItem_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            Vehicle vehicle = (Vehicle)e.Item;
+            DisplayAlert("_OnFlowItemTapped", vehicle.VehicleBrand.Name + " " + vehicle.Name, "ok");
         }
     }
 }
